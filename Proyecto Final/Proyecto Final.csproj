@@ -32,8 +32,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +59,170 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BLL\GenericBLL.cs" />
+    <Compile Include="Consultas\cClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Consultas\cClientes.Designer.cs">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cFacturas.Designer.cs">
+      <DependentUpon>cFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cPaquetes.Designer.cs">
+      <DependentUpon>cPaquetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cTransportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cTransportes.Designer.cs">
+      <DependentUpon>cTransportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\cUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\cUsuarios.Designer.cs">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ContextoGenerico.cs" />
+    <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\Facturas.cs" />
+    <Compile Include="Entidades\FacturaDetalles.cs" />
+    <Compile Include="Entidades\Paquetes.cs" />
+    <Compile Include="Entidades\Transportes.cs" />
+    <Compile Include="Entidades\UsuarioEmpleados.cs" />
+    <Compile Include="Entidades\Usuarios.cs" />
+    <Compile Include="Registros\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registros\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rClientes.Designer.cs">
+      <DependentUpon>rClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rFacturas.Designer.cs">
+      <DependentUpon>rFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rPaquetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rPaquetes.Designer.cs">
+      <DependentUpon>rPaquetes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rTransportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rTransportes.Designer.cs">
+      <DependentUpon>rTransportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rUsuarioEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rUsuarioEmpleados.Designer.cs">
+      <DependentUpon>rUsuarioEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registros\rUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registros\rUsuarios.Designer.cs">
+      <DependentUpon>rUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ClientesCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientesCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ClientesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ClientesReportForm.Designer.cs">
+      <DependentUpon>ClientesReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\FacturaCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturaCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\FacturaReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\FacturaReportForm.Designer.cs">
+      <DependentUpon>FacturaReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\PaquetesCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaquetesCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\PaquetesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PaquetesReportForm.Designer.cs">
+      <DependentUpon>PaquetesReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\TransportesCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransportesCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\TransportesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\TransportesReportForm.Designer.cs">
+      <DependentUpon>TransportesReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\UsuariosCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsuariosCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\UsuariosReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\UsuariosReportForm.Designer.cs">
+      <DependentUpon>UsuariosReportForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Consultas\cClientes.resx">
+      <DependentUpon>cClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cFacturas.resx">
+      <DependentUpon>cFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cPaquetes.resx">
+      <DependentUpon>cPaquetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cTransportes.resx">
+      <DependentUpon>cTransportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\cUsuarios.resx">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +232,66 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registros\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rClientes.resx">
+      <DependentUpon>rClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rFacturas.resx">
+      <DependentUpon>rFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rPaquetes.resx">
+      <DependentUpon>rPaquetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rTransportes.resx">
+      <DependentUpon>rTransportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rUsuarioEmpleados.resx">
+      <DependentUpon>rUsuarioEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registros\rUsuarios.resx">
+      <DependentUpon>rUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ClientesCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ClientesCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ClientesReportForm.resx">
+      <DependentUpon>ClientesReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FacturaCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FacturaCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FacturaReportForm.resx">
+      <DependentUpon>FacturaReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PaquetesCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PaquetesCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PaquetesReportForm.resx">
+      <DependentUpon>PaquetesReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\TransportesCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransportesCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\TransportesReportForm.resx">
+      <DependentUpon>TransportesReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\UsuariosCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UsuariosCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\UsuariosReportForm.resx">
+      <DependentUpon>UsuariosReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +304,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Scripts\SqlScripts.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
