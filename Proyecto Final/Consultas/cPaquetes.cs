@@ -23,6 +23,17 @@ namespace Proyecto_Final.Consultas
             InitializeComponent();
         }
 
+        private bool Validacion()
+        {
+            Console.WriteLine(FiltrarcomboBox.SelectedIndex);
+            if (BuscartextBox.Text == string.Empty && (FiltrarcomboBox.SelectedIndex >= 0 && FiltrarcomboBox.SelectedIndex < 9))
+            {
+                errorProvider.SetError(BuscartextBox, "Debe indicar el filtro");
+                return false;
+            }
+            return true;
+        }
+
         private void Filtrar()
         {
             int dato = 0;
@@ -67,18 +78,34 @@ namespace Proyecto_Final.Consultas
                     double peso = double.Parse(BuscartextBox.Text);
                     filter = (x => x.Peso >= peso);
                     break;
+
+                case 9://Todo
+                    filter = x => 1 == 1;
+                    break;
             }
         }
 
         private void Imprimirbutton_Click(object sender, EventArgs e)
         {
-            Filtrar();           
-            dataGridView.DataSource = GenericBLL.GetList<Paquetes>(filter);
+            if (Validacion())
+            {
+                Filtrar();
+                dataGridView.DataSource = GenericBLL.GetList<Paquetes>(filter);
+            }
         }
 
         private void Reportebutton_Click(object sender, EventArgs e)
         {
-            new PaquetesReportForm(GenericBLL.GetList<Paquetes>(filter)).Show();
+            if (Validacion())
+            {
+                Filtrar();
+                new PaquetesReportForm(GenericBLL.GetList<Paquetes>(filter)).Show();
+            }
+        }
+
+        private void BuscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.SetError(BuscartextBox, "");
         }
     }
 }

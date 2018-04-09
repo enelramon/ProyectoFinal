@@ -23,6 +23,17 @@ namespace Proyecto_Final.Consultas
             InitializeComponent();
         }
 
+        private bool Validacion()
+        {
+            Console.WriteLine(FiltrarcomboBox.SelectedIndex);
+            if (BuscartextBox.Text == string.Empty && (FiltrarcomboBox.SelectedIndex >= 0 && FiltrarcomboBox.SelectedIndex < 4))
+            {
+                errorProvider.SetError(BuscartextBox, "Debe indicar el filtro");
+                return false;
+            }
+            return true;
+        }
+
         private void Filtrar()
         {
             int dato = 0;
@@ -30,7 +41,7 @@ namespace Proyecto_Final.Consultas
             {
                 case 0://FacturaId
                     dato = int.Parse(BuscartextBox.Text);
-                    filter = (x => x.FacturaId == dato && ((x.Fecha >= FechaInicialdateTimePicker.Value) && (x.Fecha <= FechaFinaldateTimePicker.Value)));
+                    filter = (x => x.FacturaId == dato && ((x.Fecha >= FechaInicialdateTimePicker.Value.Date) && (x.Fecha <= FechaFinaldateTimePicker.Value.Date)));
                     break;
 
                 case 1://ClienteId
@@ -47,19 +58,34 @@ namespace Proyecto_Final.Consultas
                     Decimal monto = Decimal.Parse(BuscartextBox.Text);
                     filter = (x => x.Monto >= monto && ((x.Fecha >= FechaInicialdateTimePicker.Value) && (x.Fecha <= FechaFinaldateTimePicker.Value)));
                     break;
+
+                case 4://Todo
+                    filter = x =>1==1;
+                    break;
             }
         }
 
         private void Imprimirbutton_Click(object sender, EventArgs e)
         {
-            Filtrar();
-            dataGridView.DataSource = GenericBLL.GetList<Facturas>(filter);
+            if (Validacion())
+            {
+                Filtrar();
+                dataGridView.DataSource = GenericBLL.GetList<Facturas>(filter);
+            }
         }
 
         private void Reportebutton_Click(object sender, EventArgs e)
         {
-            Filtrar();
-            new FacturaReportForm(GenericBLL.GetList<Facturas>(filter)).Show();
+            if (Validacion())
+            {
+                Filtrar();
+                new FacturaReportForm(GenericBLL.GetList<Facturas>(filter)).Show();
+            }
+        }
+
+        private void BuscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.SetError(BuscartextBox,"");
         }
     }
 }

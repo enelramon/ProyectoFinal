@@ -23,6 +23,16 @@ namespace Proyecto_Final.Consultas
             InitializeComponent();
         }
 
+        private bool Validacion()
+        {
+            if (BuscartextBox.Text == string.Empty && (FiltrarcomboBox.SelectedIndex >= 0 && FiltrarcomboBox.SelectedIndex < 8))
+            {
+                errorProvider.SetError(BuscartextBox, "Debe indicar el filtro");
+                return false;
+            }
+            return true;
+        }
+
         private void Filtrar()
         {
             int dato = 0;
@@ -60,19 +70,34 @@ namespace Proyecto_Final.Consultas
                 case 7://Ciudad
                     filter = (x => x.Ciudad.Equals(BuscartextBox.Text));
                     break;
+
+                case 8://Todo
+                    filter = x => 1 == 1;
+                    break;
             }
         }
 
         private void Imprimirbutton_Click(object sender, EventArgs e)
         {
-            Filtrar();
-            dataGridView.DataSource = GenericBLL.GetList<Clientes>(filter);
+            if (Validacion())
+            {
+                Filtrar();
+                dataGridView.DataSource = GenericBLL.GetList<Clientes>(filter);
+            }
         }
 
         private void Reportebutton_Click(object sender, EventArgs e)
         {
-            Filtrar();
-            new ClientesReportForm(GenericBLL.GetList<Clientes>(filter)).Show();
+            if (Validacion())
+            {
+                Filtrar();
+                new ClientesReportForm(GenericBLL.GetList<Clientes>(filter)).Show();
+            }
+        }
+
+        private void BuscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            errorProvider.SetError(BuscartextBox, "");
         }
     }
 }

@@ -150,6 +150,9 @@ namespace Proyecto_Final.Registros
         {
             if (e.ColumnIndex == 6)
                 ActualizarDatos();
+            else
+                dataGridView.DataSource = detalles.ToList();
+
         }
 
         private void Buscarbutton_Click(object sender, EventArgs e)

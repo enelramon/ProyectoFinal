@@ -25,8 +25,10 @@ namespace Proyecto_Final.Reportes
 
         private void FacturacrystalReportViewer_Load(object sender, EventArgs e)
         {
-            ReportDocument report = new ReportDocument();
-            report.Load("B:/UCNE-Clases de Sistema/Programacion Aplicada 1/Proyecto/Proyecto final/Proyecto Final/Proyecto Final/Reportes/FacturaCrystalReport.rpt");
+            /* ReportDocument report = new ReportDocument();
+             report.Load("B:/UCNE-Clases de Sistema/Programacion Aplicada 1/Proyecto/Proyecto final/Proyecto Final/Proyecto Final/Reportes/FacturaCrystalReport.rpt");
+             report.SetDataSource(list);*/
+            FacturaCrystalReport report = new FacturaCrystalReport();
             report.SetDataSource(list);
 
             FacturacrystalReportViewer.ReportSource = report;

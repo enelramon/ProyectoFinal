@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.FiltrarPorcomboBox = new System.Windows.Forms.ComboBox();
@@ -35,7 +36,9 @@
             this.Imprimirbutton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.Reportebutton = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -61,7 +64,8 @@
             this.FiltrarPorcomboBox.Items.AddRange(new object[] {
             "TransporteId",
             "Compania",
-            "Telefono"});
+            "Telefono",
+            "Todo"});
             this.FiltrarPorcomboBox.Location = new System.Drawing.Point(12, 57);
             this.FiltrarPorcomboBox.Name = "FiltrarPorcomboBox";
             this.FiltrarPorcomboBox.Size = new System.Drawing.Size(121, 21);
@@ -73,6 +77,7 @@
             this.FiltrotextBox.Name = "FiltrotextBox";
             this.FiltrotextBox.Size = new System.Drawing.Size(144, 20);
             this.FiltrotextBox.TabIndex = 3;
+            this.FiltrotextBox.TextChanged += new System.EventHandler(this.FiltrotextBox_TextChanged);
             // 
             // Imprimirbutton
             // 
@@ -103,6 +108,11 @@
             this.Reportebutton.UseVisualStyleBackColor = true;
             this.Reportebutton.Click += new System.EventHandler(this.Reportebutton_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
+            // 
             // cTransportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +129,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de transportes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +144,6 @@
         private System.Windows.Forms.Button Imprimirbutton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Reportebutton;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

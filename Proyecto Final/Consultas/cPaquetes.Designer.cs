@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.FiltrarcomboBox = new System.Windows.Forms.ComboBox();
@@ -35,7 +36,9 @@
             this.BuscartextBox = new System.Windows.Forms.TextBox();
             this.Imprimirbutton = new System.Windows.Forms.Button();
             this.Reportebutton = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -67,7 +70,8 @@
             "Contenido",
             "Proveedor",
             "Transportista",
-            "Peso"});
+            "Peso",
+            "Todo"});
             this.FiltrarcomboBox.Location = new System.Drawing.Point(12, 55);
             this.FiltrarcomboBox.Name = "FiltrarcomboBox";
             this.FiltrarcomboBox.Size = new System.Drawing.Size(181, 21);
@@ -88,6 +92,7 @@
             this.BuscartextBox.Name = "BuscartextBox";
             this.BuscartextBox.Size = new System.Drawing.Size(146, 20);
             this.BuscartextBox.TabIndex = 4;
+            this.BuscartextBox.TextChanged += new System.EventHandler(this.BuscartextBox_TextChanged);
             // 
             // Imprimirbutton
             // 
@@ -109,6 +114,11 @@
             this.Reportebutton.UseVisualStyleBackColor = true;
             this.Reportebutton.Click += new System.EventHandler(this.Reportebutton_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
+            // 
             // cPaquetes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +135,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de paquetes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +150,6 @@
         private System.Windows.Forms.TextBox BuscartextBox;
         private System.Windows.Forms.Button Imprimirbutton;
         private System.Windows.Forms.Button Reportebutton;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

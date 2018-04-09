@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.FiltrarcomboBox = new System.Windows.Forms.ComboBox();
@@ -40,7 +41,9 @@
             this.FechaInicialdateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.FechaFinaldateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -63,6 +66,12 @@
             // FiltrarcomboBox
             // 
             this.FiltrarcomboBox.FormattingEnabled = true;
+            this.FiltrarcomboBox.Items.AddRange(new object[] {
+            "FacturaId",
+            "ClienteId",
+            "Fecha",
+            "Monto",
+            "Todo"});
             this.FiltrarcomboBox.Location = new System.Drawing.Point(15, 117);
             this.FiltrarcomboBox.Name = "FiltrarcomboBox";
             this.FiltrarcomboBox.Size = new System.Drawing.Size(178, 21);
@@ -74,6 +83,7 @@
             this.BuscartextBox.Name = "BuscartextBox";
             this.BuscartextBox.Size = new System.Drawing.Size(142, 20);
             this.BuscartextBox.TabIndex = 3;
+            this.BuscartextBox.TextChanged += new System.EventHandler(this.BuscartextBox_TextChanged);
             // 
             // Imprimirbutton
             // 
@@ -145,6 +155,11 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Hasta";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.RightToLeft = true;
+            // 
             // cFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +181,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de facturas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +201,6 @@
         private System.Windows.Forms.DateTimePicker FechaInicialdateTimePicker;
         private System.Windows.Forms.DateTimePicker FechaFinaldateTimePicker;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -22,7 +22,10 @@ namespace Proyecto_Final.BLL
                 if (entidad.GetType() == typeof(Facturas))
                 {
                     foreach (FacturaDetalles detalle in (entidad as Facturas).Detalles)
+                    {
+                        CambiarEstado(detalle);
                         db.Detalle.Add(detalle);
+                    }
                 }
             
                 db.SaveChanges();
@@ -34,6 +37,13 @@ namespace Proyecto_Final.BLL
                 throw;
             }
             return flag;
+        }
+
+        private static void CambiarEstado(FacturaDetalles detalle)
+        {
+            Paquetes p = Buscar<Paquetes>(detalle.PaqueteId);
+            p.Estado = "Facturado";
+            Modificar<Paquetes>(p);
         }
 
         public static bool Modificar<T>(T entidad) where T : class
